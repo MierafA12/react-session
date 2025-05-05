@@ -11,18 +11,7 @@ React allows developers to build **interactive UIs** efficiently using **declara
 
 React encourages building interfaces using **reusable components**, making code more organized, maintainable, and scalable.
 
----
 
-## 🧱 Is React a Framework?
-
-Although React is often referred to as a “framework,” **React is technically a library**, not a full-fledged framework. 
-
-- **Library**: React focuses only on the **view layer** of the application.
-- **Framework**: A framework like Angular provides complete tooling (routing, state management, HTTP, etc.).
-
-In React, you can choose your own tools (e.g., React Router for routing, Redux or Context API for state management), giving you **flexibility** but also **responsibility** for structuring your app.
-
----
 
 ## 🚀 Why Use React?
 
@@ -33,7 +22,7 @@ React has become one of the most popular tools for frontend development, and her
 - ✅ **Fast Rendering**: Uses a virtual DOM to efficiently update the UI.
 - ✅ **Strong Community**: Tons of support, libraries, and learning resources.
 - ✅ **Cross-Platform**: Works with React Native for mobile development.
-- ✅ **SEO-Friendly**: Supports SSR (Server-Side Rendering) through Next.js.
+
 
 React helps in building **dynamic and performant user experiences** quickly and effectively.
 
@@ -66,12 +55,42 @@ While JSX looks similar to HTML, there are a few important differences:
 | HTML | JSX |
 |------|-----|
 | `class` | `className` |
-| `for` | `htmlFor` |
-| Attributes use double quotes | Attributes use curly braces for JS expressions |
+| `for` | `htmlfor` |
 
-Example:
+2. You must return a single element
+JSX needs to return one root element. You can’t return multiple elements side-by-side without wrapping them.
 
-```jsx
-// JSX
-const element = <h1 className="title">Welcome</h1>;
+❌ This throws an error:
+```
+return (
+  <h1>Hello</h1>
+  <p>World</p>
+);
+```
+✅ You need a wrapper:
+```
 
+return (
+  <div>
+    <h1>Hello</h1>
+    <p>World</p>
+  </div>
+);
+```
+Or use React Fragments:
+```
+
+return (
+  <>
+    <h1>Hello</h1>
+    <p>World</p>
+  </>
+);
+```
+3. JavaScript in JSX needs curly braces {}
+You can use JS expressions, but only inside {}:
+
+```
+const num = 3;
+return <p>The number is {num}</p>;
+```
